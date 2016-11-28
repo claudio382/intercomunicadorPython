@@ -1,28 +1,22 @@
 # -*- coding: utf-8 -*-
-"""Modulo receptor emisor de audio.
 
-Usamos upd para estas dos tareas con dos hilos simultaneos
-"""
 from pyaudio import paInt16
 from pyaudio import PyAudio
 import socket
 import threading
 # import sys
 
-#variable que guardará un fragmento de información
+#variable que guardarï¿½ un fragmento de informaciï¿½n
 CHUNK = 1024
 
 FORMAT = paInt16
 CHANNELS = 1
-#Con RATE declaramos el número de frames por segundo
+#Con RATE declaramos el nï¿½mero de frames por segundo
 RATE = 44100
 
 
 def receiver(port_receiv):
-    """Receptor de datos.
 
-    Usado como un hilo recibe el puerto por el que se desea escuchar
-    """
     sock_receiver = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     server_address = ('0.0.0.0', int(port_receiv))
     sock_receiver.bind(server_address)
@@ -41,11 +35,7 @@ def receiver(port_receiv):
 
 
 def transmiter(ip_transm, port_transm):
-    """Emisor de datos.
 
-    Usado como un segundo hilo recibe como parametros la ip del compañero
-    al que enviar datos y el puerto por el que lo hace
-    """
     sock_transmiter = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
     p = PyAudio()
